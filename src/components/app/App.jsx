@@ -1,10 +1,15 @@
 import React from 'react';
-import './App.css';
+import Counter from '../counter';
+import './app.css';
+import '../../store/'
+
+import Store, { reducer } from '../../store';
+window.store = new Store(reducer, { count: 0 });
 
 function App() {
   return (
     <div className="App">
-     <span>Hello!</span>
+     <Counter />
     </div>
   );
 }

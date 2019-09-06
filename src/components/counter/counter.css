@@ -1,0 +1,24 @@
+.counter {
+  width: 16rem;
+  margin: 20% auto 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 6rem;
+}
+
+.counter__value {
+  font-size: 2rem;
+  border: 1px solid black;
+  width: 3.9rem;
+  box-sizing: border-box;
+  border-radius: 15%;
+  background-color: #fff;
+  user-select: none;
+}
+
+.counter__btns-wrapper {
+  width: 60%;
+  margin: 0 auto;
+}
