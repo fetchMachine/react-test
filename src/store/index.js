@@ -1,5 +1,4 @@
-import Store from './store';
+import { createStore } from './store';
 import updateState from './reducer';
 
-export default Store;
-export { updateState  as reducer};
+export { createStore, updateState  as reducer};

@@ -1,23 +1,18 @@
-export default class Store {
-  #state = {};
-  #updateState = () => {};
-  #cbs = [];
-  constructor(updateState, initialState = {}) {
-    this.#state = initialState;
-    this.#updateState = updateState;
+export const createStore = (reducer, initialState) => {
+  let state = initialState || {};
+  let cbs = [];
+
+  const dispatch = (action) => {
+    state = reducer(state, action);
+    cbs.forEach(cb => cb());
   }
 
-  get state () {
-    return this.#state;
+  const getState = () => state;
+
+  const subscribe = (fn) => {
+    cbs.push(fn);
+    return () => cbs = cbs.filter(cb => cb !== fn);
   }
 
-  dispatch(action) {
-    this.#state = this.#updateState(this.#state, action);
-    this.#cbs.forEach(cb => cb());
-  }
-
-  subscribe(cb) {
-    this.#cbs.push(cb);
-    return () => this.#cbs = this.#cbs.filter(myCb => myCb !== cb);
-  }
+  return { getState, dispatch, subscribe }
 }

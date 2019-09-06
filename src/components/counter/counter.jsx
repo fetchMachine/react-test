@@ -14,12 +14,12 @@ export default class Counter extends Component {
     }
   }
 
-  inc = () => window.store.dispatch({ action: 'inc' });
-  dec = () => window.store.dispatch({ action: 'dec' });
-  reset = () => window.store.dispatch({ action: 'reset' });
+  inc = () => window.store.dispatch({ type: 'inc' });
+  dec = () => window.store.dispatch({ type: 'dec' });
+  reset = () => window.store.dispatch({ type: 'reset' });
 
   render() {
-    const { count } = window.store.state;
+    const { count } = window.store.getState();
 
     return (
       <div className="counter">
